@@ -1,0 +1,36 @@
+{
+  "_comment": "Test of a demo environment",
+  "builders": [
+    {
+      "type": "docker",
+      "image": "alpine",
+      "commit": true,
+      "changes": [
+        "EXPOSE 4000 34444",
+        "WORKDIR /root",
+        "ENTRYPOINT api start"
+      ] 
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "scripts/setup.sh"
+    },
+    {
+      "type": "shell",
+      "script": "scripts/getopticdemo.sh",
+      "max_retries": 3
+    },
+    {
+      "type": "file",
+      "source": "files/optic.yml",
+      "destination": "/root/optic.yml"
+    },
+    {
+      "type": "file",
+      "source": "files/db.json",
+      "destination": "/root/db.json"
+    }
+  ]
+}
