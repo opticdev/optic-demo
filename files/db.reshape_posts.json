@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode",
+      "body": "Now the body returns!"
+    },
+    {
+      "title": "A new Postman post",
+      "author": "Optic demo",
+      "id": 2,
+      "body": "This is a new post from Postman."
+    },
+    {
+      "title": "new post",
+      "author": "Optic",
+      "id": 3,
+      "body": "This is a new post submitted by curl."
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
