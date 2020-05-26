@@ -15,5 +15,12 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
-    - name: Packer GitHub Actions
-      uses: operatehappy/packer-github-actions@v0.2.0
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Build Image
+      uses: operatehappy/packer-github-action
+      with:
+        command: build
+        arguments: "-color=false -on-error=abort"
+        target: demo.packer
+        
