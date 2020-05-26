@@ -18,7 +18,7 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
     - name: Build Image
-      uses: operatehappy/packer-github-action
+      uses: operatehappy/packer-github-actions@v0.2.0
       with:
         command: build
         arguments: "-color=false -on-error=abort"
