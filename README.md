@@ -1,16 +1,9 @@
 
 ## Optic Demo Container
 
-This repository provides the tooling necessary to build a demo container for Optic using json-server as a dummy API. The build is handled by Hashicorp's [Packer](https://www.packer.io/) and requires Docker already set up 
-
-We don't yet have the proper repository/tag information, so for now Packer leaves these blank and the image generated must be referred to by ID. This can be retagged manually with [docker image tag](https://docs.docker.com/engine/reference/commandline/tag/), though once we settle on a repo this can be included in the Packer file.
+This repository provides the tooling necessary to build a demo container for Optic using json-server as a dummy API. This is intended solely for use with a documented demo walkthrough - if you'd like to see Optic running in your environment, please follow the [Optic setup](https://docs.useoptic.com/setup) instructions. 
 
 ## Installing pre-requisites
-
-### Installing Packer
-
-- The easiest way is via `brew` with `brew install packer` (`brew info packer` first if you'd like).
-- If you'd prefer to avoid `brew` for some reason, [Download](https://www.packer.io/downloads/) from the web site and set up locally to execute.
 
 ### Installing Docker
 
@@ -19,16 +12,16 @@ We don't yet have the proper repository/tag information, so for now Packer leave
 
 ## Building a container
 
-With Packer installed, `packer build demo.packer` will fire off a build. By default, Packer is pretty verbose and gives you an idea of what's going on. npm WARNs will show up in red, so don't worry if you see a flood of red text unless there's an actual error.
+Invoke the Dockerfile within the root of the repository with
+
+``` sh
+docker build -t useoptic/optic-demo:latest .
+```
 
 ## Updating the container
 
-The `demo.packer` file calls out to scripts in the `scripts` folder, uploads files in the `files` folder, and otherwise gets the container ready to go. To update the container, edit:
+The `Dockerfile` file uses scripts in the `scripts` folder to set up the image (pull and initialize `Optic` and `json-server`. It then uploads files in the `files` folder that provide operational context (`optic.yml` and additional shell scripts and assets for the demo walkthrough). To update the container, edit:
 
-- `demo.packer` if you want to change how the container is manipulated (_e.g._ which scripts/files are sent, tagging the container)
-- `scripts/` if you want to change anything via command line/shell script in the container (_e.g._ new npm installs)
-- `files/` if you want to change the behavior of an application (_e.g._ optic.yml to change how it performs, such as parameterizing the proxy port)
+It's not a bad idea to run a local build to validate everything works.
 
-Once done, `packer validate demo.packer` will check the format of the packer file. It will not validate any scripts or files, and it doesn't guarantee that commands will be successful.
-
-Once validated, issue a new build.
+Until the deploys are automated, builds will need to be run manually and pushed to Dockerhub by someone with permissions to do so.
