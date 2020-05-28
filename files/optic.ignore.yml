@@ -1,0 +1,14 @@
+name: test
+tasks:
+  # The default task, invoke using `api run start`
+  # Learn how to finish setting up Optic at http://docs.useoptic.com/setup
+  start:
+    command: json-server --port $OPTIC_API_PORT --watch db.json
+    baseUrl: http://localhost:4000
+ignoreRequests:
+- OPTIONS *
+- GET /
+- GET POST PUT /db
+- GET /favicon.ico
+- GET /script.js
+- GET /style.css

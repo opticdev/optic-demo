@@ -24,27 +24,19 @@
     },
     {
       "type": "file",
-      "source": "files/optic.yml",
-      "destination": "/root/optic.yml"
-    },
-    {
-      "type": "file",
-      "source": "files/db.json",
-      "destination": "/root/db.json"
-    },
-    {
-      "type": "file",
-      "source": "files/change_posts.sh",
-      "destination": "/root/change_posts.sh"
-    },
-    {
-      "type": "file",
-      "source": "files/db.reshape_posts.json",
-      "destination": "/root/db.reshape_posts.json"
+      "source": "files/",
+      "destination": "/root"
     },
     {
       "type": "shell",
-      "inline": "chmod 755 /root/change_posts.sh"
+      "inline": "chmod 755 /root/*.sh"
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "docker-tag",
+      "repository": "useoptic/optic-demo",
+      "tag": "latest"
     }
   ]
 }

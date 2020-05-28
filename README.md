@@ -1,9 +1,9 @@
 
 ## Optic Demo Container
 
-This repository provides the tooling necessary to build a demo container for Optic using json-server as a dummy API. The build is handled by Hashicorp's [Packer](https://www.packer.io/) and requires Docker already set up 
+This repository provides the tooling necessary to build a demo container for Optic using json-server as a dummy API. This is intended solely for use with a documented demo walkthrough - if you'd like to see Optic running in your environment, please follow the [Optic setup](https://docs.useoptic.com/setup) instructions. 
 
-We don't yet have the proper repository/tag information, so for now Packer leaves these blank and the image generated must be referred to by ID. This can be retagged manually with [docker image tag](https://docs.docker.com/engine/reference/commandline/tag/), though once we settle on a repo this can be included in the Packer file.
+The build is handled by Hashicorp's [Packer](https://www.packer.io/) and requires that Docker already set up. 
 
 ## Installing pre-requisites
 
