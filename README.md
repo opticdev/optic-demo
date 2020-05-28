@@ -12,6 +12,8 @@ We don't yet have the proper repository/tag information, so for now Packer leave
 - The easiest way is via `brew` with `brew install packer` (`brew info packer` first if you'd like).
 - If you'd prefer to avoid `brew` for some reason, [Download](https://www.packer.io/downloads/) from the web site and set up locally to execute.
 
+Note: Packer 1.5.6 or newer is required. You can check your installed version with `packer --version`. If necessary, run `brew upgrade packer` or download the latest version from Packer's website.
+
 ### Installing Docker
 
 - It looks like there's a core package, though `brew cask install docker` has worked fine to set up Docker Desktop for me on MacOS
