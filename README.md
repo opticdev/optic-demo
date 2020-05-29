@@ -10,9 +10,13 @@ This repository provides the tooling necessary to build a demo container for Opt
 - It looks like there's a core package, though `brew cask install docker` has worked fine to set up Docker Desktop for me on MacOS
 - Failing that, follow the [Docker installation](https://docs.docker.com/docker-for-mac/install/) article.
 
-## Building a container
+## Container deploy process and pushing changes
 
-Invoke the Dockerfile within the root of the repository with
+The Dockerhub repository image is updated automatically when pushed to `master` on GitHub using a GitHub Action, no manual build is required to deploy. When submitting changes, please target the `develop` branch with PRs. That allows us to complete a review, and still have a staging area if we expect behavior changes.
+
+## Building and testing a container locally 
+
+It's good practice to confirm the container builds and runs the Optic Dashboard and Optic proxies `json-server`. These tests are not automated at this point. To build locally for testing, invoke the Dockerfile within the root of the repository with
 
 ``` sh
 docker build -t useoptic/optic-demo:latest .
@@ -22,6 +26,4 @@ docker build -t useoptic/optic-demo:latest .
 
 The `Dockerfile` file uses scripts in the `scripts` folder to set up the image (pull and initialize `Optic` and `json-server`. It then uploads files in the `files` folder that provide operational context (`optic.yml` and additional shell scripts and assets for the demo walkthrough). To update the container, edit:
 
-It's not a bad idea to run a local build to validate everything works.
-
-Until the deploys are automated, builds will need to be run manually and pushed to Dockerhub by someone with permissions to do so.
+As a reminder, it's good practice to run a local build to validate everything works.
